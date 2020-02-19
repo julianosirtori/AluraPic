@@ -15,17 +15,14 @@ export default {
     data(){
       return {
         titulo: 'Alurapic',
-        fotos: [
-          {
-            url: "https://abrilsuperinteressante.files.wordpress.com/2018/05/filhotes-de-cachorro-alcanc3a7am-o-c3a1pice-de-fofura-com-8-semanas1.png",
-            titulo: 'cachorro'
-          },
-          {
-            url: "https://abrilsuperinteressante.files.wordpress.com/2016/03/cachorro.png",
-            titulo: 'cachorro2'
-          }
-        ]
+        fotos: []
       }
+    },
+
+    created(){
+      this.$http.get('http://localhost:3000/v1/fotos')
+        .then(res => res.json())
+        .then(fotos => this.fotos = fotos);
     }
 }
 </script>
